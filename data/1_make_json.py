@@ -1,9 +1,9 @@
 import sys, os, json
 
-amr = [x.strip() for x in open(sys.argv[1]+'.amr','rU')]
-print 'len(amr)', len(amr)
+amr = [x.strip() for x in open(sys.argv[1]+'.amr.anonymized','rU')]
+print('len(amr)', len(amr))
 sent = [x.strip() for x in open(sys.argv[1]+'.sen','rU')]
-print 'len(sent)', len(sent)
+print('len(sent)', len(sent))
 assert len(amr) == len(sent)
 
 ids = None
@@ -17,6 +17,6 @@ for i in range(len(amr)):
     if ids != None:
         json_obj['id'] = ids[i]
     data.append(json_obj)
-print len(data)
+print(len(data))
 json.dump(data,open(sys.argv[1]+'.json','w'))
 

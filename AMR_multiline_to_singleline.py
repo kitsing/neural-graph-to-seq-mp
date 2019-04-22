@@ -5,8 +5,8 @@ def main():
     line_iterator = open(sys.argv[1], 'rU')
     amrs, id_dict = get_single_line_amrs(line_iterator)
 
-    if len(sys.argv) == 3:
-        with open(sys.argv[4] + '.amr', 'w') as amr_fh, open(sys.argv[4] + '.sen', 'w') as sen_fh:
+    if len(sys.argv) == 4:
+        with open(sys.argv[3] + '.amr', 'w') as amr_fh, open(sys.argv[3] + '.sen', 'w') as sen_fh:
             for line in open(sys.argv[2], 'r'):
                 id = line.strip()
                 amr, sen = amrs[id_dict[id]]

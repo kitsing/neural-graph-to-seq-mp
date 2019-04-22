@@ -28,7 +28,7 @@
     "with_highway": false,
     "highway_layer_num": 1,
 
-    "with_char": false,
+    "with_char": true,
     "char_dim": 100,
     "char_lstm_dim": 100,
     "max_char_per_word": 20,
@@ -36,12 +36,12 @@
     "attention_type": "hidden",
     "way_init_decoder": "all",
     "edgelabel_dim": 100,
-    "neighbor_vector_dim": 600,
+    "neighbor_vector_dim": 300,
     "fix_word_vec": false,
     "compress_input": false,
     "compress_input_dim": 300,
 
-    "gen_hidden_size": 600,
+    "gen_hidden_size": 300,
     "num_softmax_samples": 100,
     "mode": "ce_train",
 

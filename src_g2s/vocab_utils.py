@@ -8,6 +8,7 @@ class Vocab(object):
     def __init__(self, vec_path=None, dim=100, fileformat='bin',voc=None, word2id=None, word_vecs=None, unk_mapping_path=None):
         self.unk_label = '<unk>'
         self.stoplist = None
+        self.word_dim = dim
         if fileformat == 'bin':
             self.fromBinary(vec_path,voc=voc)
         elif fileformat == 'txt':
@@ -109,7 +110,11 @@ class Vocab(object):
             self.word2id[word] = cur_index
             self.id2word[cur_index] = word
             word_vecs[cur_index] = vector
-            self.word_dim = vector.size
+            word_dim = vector.size
+            if self.word_dim is not None:
+                assert self.word_dim == vector.size, (line, self.word_dim, vector.size)
+            else:
+               self.word_dim = vector.size
         vec_file.close()
 
         self.vocab_size = len(self.word2id)
@@ -119,7 +124,11 @@ class Vocab(object):
         else:
             self.word_vecs = np.zeros((self.vocab_size+1, self.word_dim), dtype=np.float32) # the last dimension is all zero
             for cur_index in xrange(self.vocab_size):
-                self.word_vecs[cur_index] = word_vecs[cur_index]
+                try:
+                    self.word_vecs[cur_index] = word_vecs[cur_index]
+                except Exception as e:
+                    print(word_vecs[cur_index].shape, self.word_vecs.shape)
+                    raise e
 
 
     def fromText_format3(self, vec_path,voc=None):

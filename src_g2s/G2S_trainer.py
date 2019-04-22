@@ -145,7 +145,7 @@ def main(_):
         print('Number of allChars: {}'.format(len(allChars)))
         print('Number of allEdgelabels: {}'.format(len(allEdgelabels)))
 
-        word_vocab = Vocab(FLAGS.word_vec_path, fileformat='txt2')
+        word_vocab = Vocab(FLAGS.word_vec_path, fileformat='txt2', dim=300)
         char_vocab = None
         if FLAGS.with_char:
             char_vocab = Vocab(voc=allChars, dim=FLAGS.char_dim, fileformat='build')
@@ -368,7 +368,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--config_path', type=str, help='Configuration file.')
 
-    #os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"   # see issue #152
+    os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"   # see issue #152
     #os.environ["CUDA_VISIBLE_DEVICES"]="2"
 
     print("CUDA_VISIBLE_DEVICES " + os.environ['CUDA_VISIBLE_DEVICES'])

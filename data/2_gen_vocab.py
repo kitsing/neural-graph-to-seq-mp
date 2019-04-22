@@ -1,7 +1,7 @@
 
 import json
 import sys
-import cPickle
+import pickle
 import re
 from collections import Counter
 import codecs
@@ -26,7 +26,7 @@ def update_vocab(path, vocab, vocab_edge, vocab_node):
 def output(d, path):
     f = codecs.open(path,'w',encoding='utf-8')
     for k,v in sorted(d.items(), key=lambda x:-x[1]):
-        print >>f, k
+        print(k, file=f)
     f.close()
 
 ##################
@@ -34,8 +34,8 @@ def output(d, path):
 vocab = Counter()
 vocab_edge = Counter()
 vocab_node = Counter()
-update_vocab('training.json', vocab, vocab_edge, vocab_node)
-print len(vocab), len(vocab_edge), len(vocab_node)
+update_vocab(sys.argv[1], vocab, vocab_edge, vocab_node)
+print(len(vocab), len(vocab_edge), len(vocab_node))
 
 output(vocab, 'vocab.txt')
 output(vocab_edge, 'vocab_edge.txt')

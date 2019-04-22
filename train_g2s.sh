@@ -3,7 +3,8 @@
 #SBATCH --mem=80GB
 #SBATCH -c 5
 
-export PYTHONPATH=$PYTHONPATH:/home/lsong10/ws/exp.graph_to_seq/neural-graph-to-seq-mp
+export PYTHONPATH=$PYTHONPATH:${PWD}
+export CUDA_VISIBLE_DEVICES=0
 
-python src_g2s/G2S_trainer.py --config_path logs_g2s/G2S.silver_2m.config.json
+python src_g2s/G2S_trainer.py --config_path ./config_g2s.json
 
