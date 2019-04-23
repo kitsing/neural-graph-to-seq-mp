@@ -4,7 +4,7 @@
     "word_vec_path": "data-low-resource/vocab.txt.emb.st",
     "suffix": "lowresource",
     "model_dir": "logs_g2s",
-    "isLower": true,
+    "isLower": false,
 
     "pointer_gen": true,
     "use_coverage": true,
@@ -22,7 +22,7 @@
     "lambda_l2": 1e-3,
     "dropout_rate": 0.1,
     "cov_loss_wt": 0.1,
-    "max_epochs": 10,
+    "max_epochs": 50,
     "optimize_type": "adam",
 
     "with_highway": false,

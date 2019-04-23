@@ -3,7 +3,8 @@
 #SBATCH --mem=10GB
 #SBATCH -c 6
 
-export PYTHONPATH=$PYTHONPATH:/home/lsong10/ws/exp.graph_to_seq/neural-graph-to-seq-mp
+export PYTHONPATH=$PYTHONPATH:${PWD}
+export CUDA_VISIBLE_DEVICES=0
 
 python src_g2s/G2S_beam_decoder.py --model_prefix logs_g2s/G2S.$1 \
         --in_path data/test.json \
