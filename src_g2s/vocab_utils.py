@@ -8,7 +8,7 @@ class Vocab(object):
     def __init__(self, vec_path=None, dim=100, fileformat='bin',voc=None, word2id=None, word_vecs=None, unk_mapping_path=None):
         self.unk_label = '<unk>'
         self.stoplist = None
-        self.word_dim = dim
+        self.word_dim = None
         if fileformat == 'bin':
             self.fromBinary(vec_path,voc=voc)
         elif fileformat == 'txt':
