@@ -6,8 +6,8 @@
 export PYTHONPATH=$PYTHONPATH:${PWD}
 export CUDA_VISIBLE_DEVICES=0
 
-python src_g2s/G2S_beam_decoder.py --model_prefix logs_g2s/G2S.$1 \
-        --in_path data/test.json \
-        --out_path logs_g2s/test.g2s.$1\.tok \
+python src_g2s/G2S_beam_decoder.py --model_prefix logs_g2s/G2S.${1} \
+        --in_path data-low-resource/dev.json \
+        --out_path logs_g2s/dev.g2s.${1}\.tok \
         --mode beam
 
