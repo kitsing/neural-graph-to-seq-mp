@@ -346,7 +346,7 @@ if __name__ == '__main__':
                 hyps = run_beam_search(sess, valid_graph, word_vocab, cur_batch, FLAGS)
                 outfile.write(cur_batch.id[0] + "\n")
                 outfile.write(' '.join(cur_batch.target_ref[0]).encode('utf-8') + "\n")
-                for j in xrange(1):
+                for j in xrange(len(hyps)):
                     hyp = hyps[j]
                     cur_passage = cur_batch.amr_node[0]
                     cur_sent = hyp.idx_seq_to_string(cur_passage, word_vocab, FLAGS)
