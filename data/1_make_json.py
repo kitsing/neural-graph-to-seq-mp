@@ -1,8 +1,8 @@
 import sys, os, json
 
-amr = [x.strip() for x in open(sys.argv[1]+'.amr.anonymized','rU')]
+amr = [x.strip().lower() for x in open(sys.argv[1]+'.amr.anonymized','rU')]
 print('len(amr)', len(amr))
-sent = [x.strip() for x in open(sys.argv[1]+'.sen','rU')]
+sent = [x.strip().lower() for x in open(sys.argv[1]+'.sen.tokenized','rU')]
 print('len(sent)', len(sent))
 assert len(amr) == len(sent)
 
